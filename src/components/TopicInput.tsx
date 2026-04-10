@@ -29,23 +29,28 @@ export default function TopicInput({ onSubmit, isLoading }: TopicInputProps) {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit} className="flex gap-2">
+    <div className="w-full max-w-xl mx-auto">
+      <form onSubmit={handleSubmit} className="flex gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <Input
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             placeholder="Enter a news topic to research..."
-            className="pl-10 h-12 text-base"
+            className="pl-11 h-12 text-sm bg-white border-gray-200 rounded-xl shadow-sm focus-visible:ring-red-500/20 focus-visible:border-red-300 placeholder:text-gray-400"
             disabled={isLoading}
           />
         </div>
-        <Button type="submit" size="lg" className="h-12 px-6" disabled={isLoading || !topic.trim()}>
+        <Button
+          type="submit"
+          size="lg"
+          className="h-12 px-6 rounded-xl bg-red-600 hover:bg-red-700 shadow-md shadow-red-500/20 text-sm font-medium"
+          disabled={isLoading || !topic.trim()}
+        >
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Researching...
+              Researching
             </>
           ) : (
             "Research"
@@ -53,8 +58,8 @@ export default function TopicInput({ onSubmit, isLoading }: TopicInputProps) {
         </Button>
       </form>
 
-      <div className="flex flex-wrap gap-2 mt-4 justify-center">
-        <span className="text-sm text-muted-foreground">Try:</span>
+      <div className="flex flex-wrap gap-2 mt-5 justify-center">
+        <span className="text-xs text-gray-400">Try:</span>
         {EXAMPLE_TOPICS.map((t) => (
           <button
             key={t}
@@ -62,7 +67,7 @@ export default function TopicInput({ onSubmit, isLoading }: TopicInputProps) {
               setTopic(t);
               if (!isLoading) onSubmit(t);
             }}
-            className="text-sm px-3 py-1 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
+            className="text-xs px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-gray-500 hover:text-red-600 hover:border-red-200 hover:shadow-sm transition-all duration-200"
             disabled={isLoading}
           >
             {t}
