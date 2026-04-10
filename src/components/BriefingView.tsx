@@ -43,7 +43,7 @@ export default function BriefingView({ briefing }: BriefingViewProps) {
   }, []);
 
   return (
-    <div ref={ref} className="w-full max-w-3xl mx-auto mt-12 space-y-8">
+    <div ref={ref} className="w-full max-w-3xl mx-auto mt-12 space-y-8 scroll-mt-20">
       {/* Header */}
       <div className="text-center space-y-3">
         <Badge variant="outline" className="text-[10px] tracking-widest uppercase font-medium text-red-600 border-red-200 bg-red-50/50">

@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# News Intelligence Agent
 
-## Getting Started
+An AI-powered news research tool that takes any topic and delivers a structured intelligence briefing — with bias detection, source credibility scoring, and contradiction analysis — in seconds.
 
-First, run the development server:
+![Home Page](public/homepage.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What it does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Enter a topic (e.g. *"AI regulation 2025"* or *"Gaza ceasefire"*) and the agent:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Searches** — queries Tavily across 6+ diverse news sources
+2. **Analyzes** — uses Groq (Llama 3.1 8B) to score each source for political bias and credibility, and surfaces key claims
+3. **Generates** — produces a structured briefing with an executive summary, key facts, contested claims, multiple perspectives, and a timeline
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Briefing output
 
-## Learn More
+![News Briefing Report](public/breifing.png)
 
-To learn more about Next.js, take a look at the following resources:
+The final report includes:
+- **Executive Summary** — concise overview of the topic
+- **Key Facts** — verified, cross-source facts
+- **Contested Claims** — where sources disagree
+- **Perspectives** — left / center / right viewpoints
+- **Timeline** — chronological event breakdown
+- **Source Cards** — per-source bias label, credibility score, and summary
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Layer | Tool |
+|---|---|
+| Framework | Next.js (App Router) |
+| UI | Tailwind CSS + shadcn/ui |
+| Search | [Tavily](https://tavily.com) |
+| LLM | [Groq](https://groq.com) — `llama-3.1-8b-instant` |
+| Streaming | Server-Sent Events (SSE) |
 
-## Deploy on Vercel
+## Getting started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- A [Tavily API key](https://tavily.com) (free tier available)
+- A [Groq API key](https://console.groq.com) (free tier available)
+
+
+
+## License
+
+MIT
